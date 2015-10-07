@@ -1,12 +1,14 @@
 class Hamming
-  VERSION = 1
-  def self.compute(a_dna, b_dna)
-    raise ArgumentError unless a_dna.size == b_dna.size
+  VERSION = 2
+  DIFFERENT_SIZE_ERROR_MESSAGE = "dna sequences should have same size in order to be compared"
 
-    calculate_total_difference(a_dna.chars, b_dna.chars)
+  def self.compute(base_dna_sequence, comparable_dna_sequence)
+    find_different_pairs_in(base_dna_sequence.chars, comparable_dna_sequence.chars).size
   end
 
-  def self.calculate_total_difference(splitted_a_dna, splitted_b_dna)
-    splitted_a_dna.zip(splitted_b_dna).count { |a, b| a != b }
+  private
+  def self.find_different_pairs_in(base_dna_sequence, comparable_dna_sequence)
+    raise ArgumentError.new(DIFFERENT_SIZE_ERROR_MESSAGE) unless base_dna_sequence.size == comparable_dna_sequence.size
+    base_dna_sequence.zip(comparable_dna_sequence).select { |base_nucleotide, comparable_nucleotide| base_nucleotide != comparable_nucleotide }
   end
 end
