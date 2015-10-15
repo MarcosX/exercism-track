@@ -46,7 +46,7 @@ defmodule WordsTest do
 
   test "German" do
     expected = %{"götterfunken" => 1, "schöner" => 1, "freude" => 1}
-    assert Words.count("freude schöner götterfunken") == expected
+    assert Words.count("Freude schöner Götterfunken") == expected
   end
 
   test "normalize case" do
