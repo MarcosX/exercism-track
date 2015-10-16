@@ -7,19 +7,23 @@ defmodule Words do
   @spec count(String.t) :: map()
   def count(sentence) do
     String.split(sentence, ~r/(\s|_)/)
-      |> group_elements
+      |> Enum.reject(fn(word) -> !String.match?(word, ~r/\w+/) end)
+      |> group_words
   end
 
-  defp group_elements(elements) do
-    Enum.reject(elements, fn(e) -> !String.match?(e, ~r/\w+/) end)
-      |> Enum.map(fn(e) ->
-        String.downcase(e)
-          |> String.split("")
-          |> Enum.reject(fn(c) -> !String.match?(c, ~r/(\w|-)/) end)
-          |> Enum.join
-        end)
-      |> Enum.reduce(%{}, fn(element, acc) ->
-        Map.put(acc, element, (acc[element] || 0) + 1)
+  defp group_words(words) do
+    clear_non_word_characters(words)
+      |> Enum.reduce(%{}, fn(word, acc) ->
+        Map.put(acc, word, (acc[word] || 0) + 1)
       end)
+  end
+
+  defp clear_non_word_characters(words) do
+    Enum.map(words, fn(word) ->
+      String.downcase(word)
+      |> String.split("")
+      |> Enum.reject(fn(char) -> !String.match?(char, ~r/(\w|-)/) end)
+      |> Enum.join
+    end)
   end
 end
