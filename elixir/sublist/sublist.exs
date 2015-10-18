@@ -13,4 +13,11 @@ defmodule Sublist do
      _ -> :error
    end
   end
+
+  def compare([a_head | a_tail], b) when b == [] do
+   case compare(a_tail, b) do
+     :equal -> :superlist
+     _ -> :error
+   end
+  end
 end
