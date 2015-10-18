@@ -6,4 +6,11 @@ defmodule Sublist do
   def compare(a, b) when a == b do
     :equal
   end
+
+  def compare(a, [b_head | b_tail]) when a == [] do
+   case compare(a, b_tail) do
+     :equal -> :sublist
+     _ -> :error
+   end
+  end
 end
