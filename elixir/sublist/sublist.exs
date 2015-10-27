@@ -7,11 +7,21 @@ defmodule Sublist do
     :equal
   end
 
-  def compare(a, b) when a == [] do
+  def compare([], _b) do
     :sublist
   end
 
-  def compare(a, b) when b == [] do
+  def compare(_a, []) do
     :superlist
+  end
+
+  def compare(a, b) do
+    sublist = a -- b
+    superlist = b -- a
+    cond do
+      List.first(sublist) == nil -> :sublist
+      List.first(superlist) == nil -> :superlist
+      true -> :unequal
+    end
   end
 end
