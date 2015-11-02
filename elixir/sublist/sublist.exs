@@ -16,12 +16,39 @@ defmodule Sublist do
   end
 
   def compare(a, b) do
-    sublist = a -- b
-    superlist = b -- a
     cond do
-      List.first(sublist) == nil -> :sublist
-      List.first(superlist) == nil -> :superlist
-      true -> :unequal
+      length(a) <= length(b) ->
+        if beginning_of_match(a, b), do: :sublist, else: :unequal
+      length(a) > length(b) ->
+        if beginning_of_match(b, a), do: :superlist, else: :unequal
     end
+  end
+
+  defp beginning_of_match([x | at], [x | bt]) do
+    if(is_sublist([[x|at], [x|bt]])) do
+      true
+    else
+      beginning_of_match([x|at], bt)
+    end
+  end
+
+  defp beginning_of_match(a, [_ | bt]) do
+    beginning_of_match(a, bt)
+  end
+
+  defp beginning_of_match(_, []) do
+    false
+  end
+
+  defp is_sublist([[x | at], [x | bt]]) do
+    is_sublist([at, bt])
+  end
+
+  defp is_sublist([[], _]) do
+    true
+  end
+
+  defp is_sublist([_, _]) do
+    false
   end
 end

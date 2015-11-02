@@ -51,7 +51,6 @@ defmodule SublistTest do
     assert Sublist.compare([3,4,5], Enum.to_list(1..1_000_000)) == :sublist
   end
 
-  @tag :pending
   test "huge sublist not in huge list" do
     assert Sublist.compare(Enum.to_list(10..1_000_001),
                            Enum.to_list(1..1_000_000))
@@ -86,7 +85,6 @@ defmodule SublistTest do
     assert Sublist.compare([1,2,1,2,3], [1,2,3,1,2,1,2,3,2,1]) == :sublist
   end
 
-  @tag :pending
   test "recurring values unequal" do
     assert Sublist.compare([1,2,1,2,3], [1,2,3,1,2,3,2,3,2,1]) == :unequal
   end
