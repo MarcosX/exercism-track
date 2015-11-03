@@ -18,37 +18,37 @@ defmodule Sublist do
   def compare(a, b) do
     cond do
       length(a) <= length(b) ->
-        if beginning_of_match(a, b), do: :sublist, else: :unequal
+        if find_match(a, b), do: :sublist, else: :unequal
       length(a) > length(b) ->
-        if beginning_of_match(b, a), do: :superlist, else: :unequal
+        if find_match(b, a), do: :superlist, else: :unequal
     end
   end
 
-  defp beginning_of_match([x | at], [x | bt]) do
-    if(is_sublist([[x|at], [x|bt]])) do
+  defp find_match([head|a_tail], [head|b_tail]) do
+    if(is_sublist(a_tail, b_tail)) do
       true
     else
-      beginning_of_match([x|at], bt)
+      find_match([head|a_tail], b_tail)
     end
   end
 
-  defp beginning_of_match(a, [_ | bt]) do
-    beginning_of_match(a, bt)
+  defp find_match(a, [_b_head|b_tail]) do
+    find_match(a, b_tail)
   end
 
-  defp beginning_of_match(_, []) do
+  defp find_match(_a, []) do
     false
   end
 
-  defp is_sublist([[x | at], [x | bt]]) do
-    is_sublist([at, bt])
+  defp is_sublist([head|a_tail], [head|b_tail]) do
+    is_sublist(a_tail, b_tail)
   end
 
-  defp is_sublist([[], _]) do
+  defp is_sublist([], _b) do
     true
   end
 
-  defp is_sublist([_, _]) do
+  defp is_sublist(_a, _b) do
     false
   end
 end
