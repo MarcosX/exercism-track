@@ -15,13 +15,12 @@ defmodule Sublist do
     :superlist
   end
 
-  def compare(a, b) do
-    cond do
-      length(a) <= length(b) ->
-        if find_match(a, b), do: :sublist, else: :unequal
-      length(a) > length(b) ->
-        if find_match(b, a), do: :superlist, else: :unequal
-    end
+  def compare(a, b) when length(a) <= length(b) do
+    if find_match(a, b), do: :sublist, else: :unequal
+  end
+
+  def compare(a, b) when length(a) > length(b) do
+    if find_match(b, a), do: :superlist, else: :unequal
   end
 
   defp find_match([head|a_tail], [head|b_tail]) do
