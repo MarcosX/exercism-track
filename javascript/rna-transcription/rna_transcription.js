@@ -5,11 +5,9 @@ var rnaTranscriptionTable = {
   T: 'A'
 }
 var toRna = function(dna){
-  var transcribedRna = [];
-  for(var i = 0; i<dna.length; i++){
-    transcribedRna.push(rnaTranscriptionTable[dna[i]]);
-  }
-  return transcribedRna.join('');
+  return dna.split('').map(function(e){
+    return rnaTranscriptionTable[e];
+  }).join('');
 }
 
 module.exports = toRna;
