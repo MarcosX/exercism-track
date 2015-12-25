@@ -5,6 +5,7 @@ else
 end
 
 ExUnit.start
+ExUnit.configure exclude: :pending, trace: true
 
 defmodule ListOpsTest do
   alias ListOps, as: L
