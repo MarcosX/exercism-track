@@ -4,13 +4,15 @@ defmodule Anagram do
   """
   @spec match(String.t, [String.t]) :: [String.t]
   def match(base, candidates) do
-    Enum.filter(candidates, fn(candidate) ->
-      String.downcase(candidate) != String.downcase(base) &&
-        sort_string(base) == sort_string(candidate)
-    end) 
+    Enum.filter(candidates, &(same_chars_but_not_equal(base, &1)))
   end
 
-  defp sort_string(string) do
+  defp same_chars_but_not_equal(base, candidate) do
+    String.downcase(base) != String.downcase(candidate) &&
+      sort_string_chars(base) == sort_string_chars(candidate)
+  end
+
+  defp sort_string_chars(string) do
     String.downcase(string)
     |> String.split("")
     |> Enum.sort
