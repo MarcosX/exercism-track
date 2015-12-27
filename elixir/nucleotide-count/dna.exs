@@ -15,7 +15,7 @@ defmodule DNA do
   @spec count([char], char) :: non_neg_integer
   def count(strand, nucleotide) do
     validate_strand(strand)
-    validete_nucleotide(nucleotide)
+    validate_nucleotide(nucleotide)
     Enum.filter(strand, &(&1 == nucleotide))
     |> Enum.count
   end
@@ -41,14 +41,22 @@ defmodule DNA do
   end
 
   defp validate_strand(strand) do
-    if (Enum.count(Enum.reject(strand, &(Enum.member?(@nucleotides, &1)))) > 0) do
+    if (has_invalid_nucleotide?(strand)) do
       raise ArgumentError
     end
   end
 
-  defp validete_nucleotide(nucleotide) do
-    if (!Enum.member?(@nucleotides, nucleotide)) do
+  defp validate_nucleotide(nucleotide) do
+    if (!valid_nucleotide?(nucleotide)) do
       raise ArgumentError
     end
+  end
+
+  defp has_invalid_nucleotide?(strand) do
+    Enum.count(Enum.reject(strand, &(valid_nucleotide?(&1)))) > 0
+  end
+
+  defp valid_nucleotide?(nucleotide) do
+    Enum.member?(@nucleotides, nucleotide)
   end
 end
