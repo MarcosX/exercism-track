@@ -4,10 +4,13 @@ var rnaTranscriptionTable = {
   A: 'U',
   T: 'A'
 }
-var toRna = function(dna){
+
+var DnaTranscriber = function() {};
+
+DnaTranscriber.prototype.toRna = function(dna){
   return dna.split('').map(function(e){
     return rnaTranscriptionTable[e];
   }).join('');
 }
 
-module.exports = toRna;
+module.exports = DnaTranscriber;
