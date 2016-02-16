@@ -19,10 +19,7 @@ Bob.prototype = {
   },
 
   yelling: function(input) {
-             if (input === input.toLowerCase()) {
-               return false;
-             }
-             return input === input.toUpperCase();
+             return !(input === input.toLowerCase()) && input === input.toUpperCase();
            },
 
   questioning: function(input) {
