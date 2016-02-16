@@ -7,13 +7,11 @@ var Bob = function() {};
 
 Bob.prototype = {
   hey: function(input) {
-         var onlyValidChars = this.filterInvalidChars(input);
-
-         if (this.yelling(onlyValidChars)) {
+         if (this.yelling(input)) {
            return 'Whoa, chill out!';
-         } else if (this.questioning(onlyValidChars)) {
+         } else if (this.questioning(input)) {
            return 'Sure.';
-         } else if (this.silecing(onlyValidChars)) {
+         } else if (this.silecing(input)) {
            return 'Fine. Be that way!';
          }
 
@@ -21,10 +19,10 @@ Bob.prototype = {
   },
 
   yelling: function(input) {
-             var forcefuQuestionExclamationRe = /^[A-Z|\W]+[\!|\?]$/,
-             shoutingRe = /^[A-Z]+$/;
-
-             return forcefuQuestionExclamationRe.test(input) || shoutingRe.test(input);
+             if (input === input.toLowerCase()) {
+               return false;
+             }
+             return input === input.toUpperCase();
            },
 
   questioning: function(input) {
@@ -32,12 +30,8 @@ Bob.prototype = {
                },
 
   silecing: function(input) {
-              return input === '';
+              return /^\s*$/.test(input);
             },
-
-  filterInvalidChars: function(input) {
-                        return input.replace(/[\d|\s]+/g, '');
-                      }
 }
 
 module.exports = Bob;
