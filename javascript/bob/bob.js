@@ -3,26 +3,21 @@
 // convenience to get you started writing code faster.
 //
 
-var Bob = function() {
-  this.WHATEVER = 'Whatever.';
-  this.CHILL = 'Whoa, chill out!';
-  this.SURE = 'Sure.';
-  this.FINE = 'Fine. Be that way!';
-};
+var Bob = function() {};
 
 Bob.prototype = {
   hey: function(input) {
          var onlyValidChars = this.filterInvalidChars(input);
 
          if (this.yelling(onlyValidChars)) {
-           return this.CHILL;
+           return 'Whoa, chill out!';
          } else if (this.questioning(onlyValidChars)) {
-           return this.SURE;
+           return 'Sure.';
          } else if (this.silecing(onlyValidChars)) {
-           return this.FINE;
+           return 'Fine. Be that way!';
          }
 
-         return this.WHATEVER;
+         return 'Whatever.';
   },
 
   yelling: function(input) {
