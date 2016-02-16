@@ -11,7 +11,7 @@ Bob.prototype = {
            return 'Whoa, chill out!';
          } else if (this.questioning(input)) {
            return 'Sure.';
-         } else if (this.silecing(input)) {
+         } else if (this.silencing(input)) {
            return 'Fine. Be that way!';
          }
 
@@ -26,7 +26,7 @@ Bob.prototype = {
                  return /\?$/.test(input);
                },
 
-  silecing: function(input) {
+  silencing: function(input) {
               return /^\s*$/.test(input);
             },
 }
