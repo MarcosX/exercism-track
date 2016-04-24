@@ -45,11 +45,15 @@ defmodule ListOps do
 
   @spec filter(list, (any -> as_boolean(term))) :: list
   def filter([l_head|l_tail], f) do
-    if f.(l_head) do
+    do_filter([l_head|l_tail], f, f.(l_head))
+  end
+
+  defp do_filter([l_head|l_tail], f, true) do
       [l_head|filter(l_tail, f)]
-    else
+  end
+
+  defp do_filter([_l_head|l_tail], f, false) do
       filter(l_tail, f)
-    end
   end
 
   @type acc :: any
