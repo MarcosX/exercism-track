@@ -1,4 +1,4 @@
-package brizeno.exercism;
+package scala;
 
 object HelloWorld {
   def hello() = "Hello, World!"

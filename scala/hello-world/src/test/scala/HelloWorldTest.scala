@@ -1,5 +1,5 @@
 import org.scalatest.{Matchers, FunSuite}
-import brizeno.exercism.HelloWorld;
+import scala.HelloWorld;
 
 class HelloWorldTest extends FunSuite with Matchers {
   test("Without name") {
