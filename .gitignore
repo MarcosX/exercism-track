@@ -18,6 +18,7 @@ php/
 plsql/
 python/
 rust/
-scala/
 scheme/
 swift/
+
+scala/**/target/
