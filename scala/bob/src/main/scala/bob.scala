@@ -2,13 +2,14 @@ package scala;
 
 class Bob {
   def hey(message:String):String = {
-    var response = "Whatever."
     if(shouting(message)) {
-      response = "Whoa, chill out!"
+      return "Whoa, chill out!"
     } else if(questioning(message)) {
-      response = "Sure."
+      return "Sure."
+    } else if(silencing(message)) {
+      return "Fine. Be that way!"
     }
-    response
+    "Whatever."
   }
 
   private def questioning(message:String):Boolean = {
@@ -17,6 +18,10 @@ class Bob {
 
   private def shouting(message:String):Boolean = {
     message != message.toLowerCase && message == message.toUpperCase
+  }
+
+  private def silencing(message:String):Boolean = {
+    message.trim.isEmpty
   }
 }
 

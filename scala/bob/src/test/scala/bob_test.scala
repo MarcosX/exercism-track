@@ -44,49 +44,41 @@ class BobSpecs extends FlatSpec with Matchers {
   }
 
   it should "see only numbers as speech" in {
-    pending
     val response = teenager.hey("1, 2, 3")
     response should be ("Whatever.")
   }
 
   it should "respond to questions with only numbers" in {
-    pending
     val response = teenager.hey("4?")
     response should be ("Sure.")
   }
 
   it should "respond to shouting with no exclamation mark" in {
-    pending
     val response = teenager.hey("I HATE YOU")
     response should be ("Whoa, chill out!")
   }
 
   it should "respond to statements with ? in the middle" in {
-    pending
     val response = teenager.hey("Ending with ? means a question.")
     response should be ("Whatever.")
   }
 
   it should "respond to prattling on" in {
-    pending
     val response = teenager.hey("Wait! Hang on. Are you going to be OK?")
     response should be ("Sure.")
   }
 
   it should "respond to silence" in {
-    pending
     val response = teenager.hey("")
     response should be ("Fine. Be that way!")
   }
 
   it should "respond to prolonged silence" in {
-    pending
     val response = teenager.hey("       ")
     response should be ("Fine. Be that way!")
   }
 
   it should "respond to multiple line questions" in {
-    pending
     val response = teenager.hey("""
 Does this cryogenic chamber make me look fat?
 no""")
