@@ -22,3 +22,5 @@ scheme/
 swift/
 
 scala/**/target/
+
+.DS_Store
