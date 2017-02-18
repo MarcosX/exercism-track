@@ -5,13 +5,15 @@ class Sieve
 
   def primes
     primes = (2..@limit).to_a
-    primes.each do |number, is_prime|
-        multiplier = 2
-        until number * multiplier > @limit do
-          primes.delete(number*multiplier)
-          multiplier += 1
-        end
+    primes.each do |number|
+      multipliers(number).each do |multiplier|
+        primes.delete(number*multiplier)
+      end
     end
-    primes
+  end
+
+  private
+  def multipliers(number)
+    2..@limit/number
   end
 end
