@@ -1,0 +1,30 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Fixnum	roman_numerals.rb	/^class Fixnum$/;"	c
+RomanNumeralsTest	roman_numerals_test.rb	/^class RomanNumeralsTest < Minitest::Test$/;"	c
+roman_numerals.rb	roman_numerals.rb	1;"	F
+roman_numerals_test.rb	roman_numerals_test.rb	1;"	F
+test_1	roman_numerals_test.rb	/^  def test_1$/;"	f	class:RomanNumeralsTest
+test_1024	roman_numerals_test.rb	/^  def test_1024$/;"	f	class:RomanNumeralsTest
+test_141	roman_numerals_test.rb	/^  def test_141$/;"	f	class:RomanNumeralsTest
+test_163	roman_numerals_test.rb	/^  def test_163$/;"	f	class:RomanNumeralsTest
+test_2	roman_numerals_test.rb	/^  def test_2$/;"	f	class:RomanNumeralsTest
+test_27	roman_numerals_test.rb	/^  def test_27$/;"	f	class:RomanNumeralsTest
+test_3	roman_numerals_test.rb	/^  def test_3$/;"	f	class:RomanNumeralsTest
+test_3000	roman_numerals_test.rb	/^  def test_3000$/;"	f	class:RomanNumeralsTest
+test_4	roman_numerals_test.rb	/^  def test_4$/;"	f	class:RomanNumeralsTest
+test_402	roman_numerals_test.rb	/^  def test_402$/;"	f	class:RomanNumeralsTest
+test_48	roman_numerals_test.rb	/^  def test_48$/;"	f	class:RomanNumeralsTest
+test_5	roman_numerals_test.rb	/^  def test_5$/;"	f	class:RomanNumeralsTest
+test_575	roman_numerals_test.rb	/^  def test_575$/;"	f	class:RomanNumeralsTest
+test_59	roman_numerals_test.rb	/^  def test_59$/;"	f	class:RomanNumeralsTest
+test_6	roman_numerals_test.rb	/^  def test_6$/;"	f	class:RomanNumeralsTest
+test_9	roman_numerals_test.rb	/^  def test_9$/;"	f	class:RomanNumeralsTest
+test_911	roman_numerals_test.rb	/^  def test_911$/;"	f	class:RomanNumeralsTest
+test_93	roman_numerals_test.rb	/^  def test_93$/;"	f	class:RomanNumeralsTest
+test_bookkeeping	roman_numerals_test.rb	/^  def test_bookkeeping$/;"	f	class:RomanNumeralsTest
+to_roman	roman_numerals.rb	/^  def to_roman$/;"	f	class:Fixnum
