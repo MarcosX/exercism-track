@@ -1,5 +1,5 @@
 class Prime
-  @@primes = [1, 2]
+  @@primes = [1, 2, 3]
 
   def self.nth(n)
     raise ArgumentError if n <= 0
@@ -9,9 +9,13 @@ class Prime
 
   private
   def self.is_prime?(number)
-    (2..number-1).find do |previous_number|
-      (number % previous_number) == 0
-    end.nil?
+    return false if (number % 2 == 0) || (number % 3 == 0)
+    previous_number = 5
+    while (previous_number * previous_number) <= number
+      return false if (number % previous_number == 0) || (number % (previous_number + 2) == 0)
+      previous_number += 6
+    end
+    true
   end
 
   def self.find_next_prime
