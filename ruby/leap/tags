@@ -1,0 +1,21 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Date	leap_test.rb	/^class Date$/;"	c
+Year	leap.rb	/^class Year$/;"	c
+YearTest	leap_test.rb	/^class YearTest < Minitest::Test$/;"	c
+leap	leap.rb	/^  def self.leap?(year)$/;"	F	class:Year
+leap.rb	leap.rb	1;"	F
+leap?	leap_test.rb	/^  def leap?$/;"	f	class:Date
+leap_test.rb	leap_test.rb	1;"	F
+test_bookkeeping	leap_test.rb	/^  def test_bookkeeping$/;"	f	class:YearTest
+test_leap_twenty_fourth_century	leap_test.rb	/^  def test_leap_twenty_fourth_century$/;"	f	class:YearTest
+test_leap_y2k	leap_test.rb	/^  def test_leap_y2k$/;"	f	class:YearTest
+test_leap_year	leap_test.rb	/^  def test_leap_year$/;"	f	class:YearTest
+test_standard_and_odd_year	leap_test.rb	/^  def test_standard_and_odd_year$/;"	f	class:YearTest
+test_standard_eighteenth_century	leap_test.rb	/^  def test_standard_eighteenth_century$/;"	f	class:YearTest
+test_standard_even_year	leap_test.rb	/^  def test_standard_even_year$/;"	f	class:YearTest
+test_standard_nineteenth_century	leap_test.rb	/^  def test_standard_nineteenth_century$/;"	f	class:YearTest
