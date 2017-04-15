@@ -22,4 +22,6 @@ swift/
 
 scala/**/target/
 
+*.pyc
+
 .DS_Store
