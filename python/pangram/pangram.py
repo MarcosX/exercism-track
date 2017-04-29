@@ -1,5 +1,11 @@
 import re
 
+LETTER_QTTY = 26
+
 def is_pangram(phrase):
-  single_letters = re.sub(r"[^A-Za-z]", "", phrase.lower())
-  return len(set(single_letters)) == 26
+    unique_letters = __get_unique_letters_from__(phrase)
+    return len(unique_letters) == LETTER_QTTY
+
+def __get_unique_letters_from__(phrase):
+    only_letters = re.sub(r"[^a-z]", "", phrase.lower())
+    return set(only_letters)
