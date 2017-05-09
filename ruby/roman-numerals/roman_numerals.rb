@@ -1,4 +1,8 @@
-class Fixnum
+module BookKeeping
+  VERSION = 2
+end
+
+class Integer
   ROMAN_TABLE = {
     1000 => 'M',
     900 => 'CM',

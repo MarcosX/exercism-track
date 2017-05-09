@@ -1,3 +1,7 @@
+module BookKeeping
+    VERSION = 3
+end
+
 class Pangram
   TOTAL_AMOUNT_OF_LETTERS = 26
   def self.pangram?(phrase)

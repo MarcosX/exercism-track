@@ -1,3 +1,7 @@
+module BookKeeping
+    VERSION = 2
+end
+
 class Robot
   attr_reader :name
   @@used_names = []
