@@ -38,4 +38,4 @@ build-push:
 		docker push marcosx/exercis.io
 
 docker-test:
-	docker run -it marcosx/exercism.io
+	docker run -v ~/exercism:/exercism -it marcosx/exercism.io
