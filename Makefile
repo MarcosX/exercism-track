@@ -31,11 +31,11 @@ test:
 	jasmine-node javascript/**/*.spec.js
 
 build:
-	docker build -t marcosx/exercism.io
+	docker build -t marcosx/exercism.io .
 
 build-push:
-	docker build -t marcosx/exercism.io &&\
-		docker push marcosx/exercis.io
+	docker build -t marcosx/exercism.io . &&\
+		docker push marcosx/exercism.io
 
 docker-test:
 	docker run -v ~/exercism:/exercism -it marcosx/exercism.io
