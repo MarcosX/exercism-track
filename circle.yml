@@ -1,0 +1,12 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+      - docker build --rm=false -t marcosx/exercism.io .
+
+test:
+  override:
+    - docker run -it marcosx/exercism.io
