@@ -32,4 +32,6 @@ test:
 	echo "Running Ruby tests" &&\
 	ls -d ruby/* | xargs -L 1 -I folder bash -c 'cd folder && ruby *_test.rb' &&\
 	echo "Running Javascript tests" &&\
-	jasmine-node javascript/**/*.spec.js
+	jasmine-node javascript/**/*.spec.js &&\
+	echo "Running Scala tests" &&\
+	ls -d scala/* | xargs -L 1 -I folder bash -c 'cd folder && sbt test'
