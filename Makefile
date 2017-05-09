@@ -29,3 +29,13 @@ test:
 	ls -d ruby/* | xargs -L 1 -I folder bash -c 'cd folder && ruby *_test.rb' &&\
 	echo "Running Javascript tests" &&\
 	jasmine-node javascript/**/*.spec.js
+
+build:
+	docker build -t marcosx/exercism.io
+
+build-push:
+	docker build -t marcosx/exercism.io &&\
+		docker push marcosx/exercis.io
+
+docker-test:
+	docker run -it marcosx/exercism.io
