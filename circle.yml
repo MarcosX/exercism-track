@@ -5,7 +5,7 @@ machine:
 dependencies:
   override:
     - docker info
-      - docker build --rm=false -t marcosx/exercism.io .
+    - docker build --rm=false -t marcosx/exercism.io .
 
 test:
   override:
