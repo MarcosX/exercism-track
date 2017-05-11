@@ -5,10 +5,8 @@ class Hamming
   end
 
   private def self.count_different_nucleotides(base_strand_chars, to_compare_strand_chars)
-    different_nucleotides = 0
-    base_strand_chars.zip(to_compare_strand_chars) do |base_strand, to_compare_strand|
-      different_nucleotides +=1 if base_strand != to_compare_strand
-    end
-    different_nucleotides
+    base_strand_chars.zip(to_compare_strand_chars).select do |base_strand, to_compare_strand|
+      base_strand != to_compare_strand
+    end.size
   end
 end
