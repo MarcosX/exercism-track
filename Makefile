@@ -33,6 +33,12 @@ test:
 build:
 	docker build -t marcosx/exercism.io .
 
+check-in:
+	make test &&\
+		docker build -t marcosx/exercism.io . &&\
+		docker push marcosx/exercism.io &&\
+		git push origin master
+
 build-push:
 	docker build -t marcosx/exercism.io . &&\
 		docker push marcosx/exercism.io
