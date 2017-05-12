@@ -4,4 +4,4 @@ machine:
 
 test:
   override:
-    - docker run -v exercism-track:/exercism -it marcosx/exercism.io
+    - docker run -it marcosx/exercism.io
