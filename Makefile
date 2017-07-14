@@ -1,3 +1,7 @@
+test-clojure:
+	echo "Running Clojure tests"
+	ls -d clojure/* | xargs -L 1 -I folder bash -c 'cd folder && lein test'
+
 test-crystal:
 	echo "Running Crystal tests"
 	ls -d crystal/* | xargs -L 1 -I folder bash -c 'cd folder && crystal spec'

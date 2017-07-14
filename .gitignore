@@ -20,6 +20,7 @@ scheme/
 swift/
 
 scala/**/target/
+clojure/**/target/
 
 *.pyc
 
