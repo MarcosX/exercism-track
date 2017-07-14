@@ -1,7 +1,9 @@
-(ns bob)
+(ns bob
+  (:require [clojure.string :refer [trim upper-case ends-with?]]
+            bob))
 
 (defn nothing? [phrase]
-  (= (clojure.string/trim phrase) "")
+  (= (trim phrase) "")
 )
 
 (defn nonsense? [phrase]
@@ -9,7 +11,7 @@
 )
 
 (defn forceful? [phrase]
-  (= phrase (clojure.string/upper-case phrase))
+  (= phrase (upper-case phrase))
 )
 
 (defn forceful-question? [phrase]
@@ -17,7 +19,7 @@
 )
 
 (defn question? [phrase]
-  (clojure.string/ends-with? phrase "?")
+  (ends-with? phrase "?")
 )
 
 (defn response-for [phrase]
