@@ -27,11 +27,11 @@
     "Fine. Be that way!"
     (if (nonsense? phrase)
       "Whatever."
-    (if (forceful? phrase)
-      (if (forceful-question? phrase)
-        "Sure."
-        "Whoa, chill out!")
-      (if (question? phrase)
-        "Sure."
-        "Whatever."))))
-)
+      (if (forceful? phrase)
+        (if (forceful-question? phrase)
+          "Sure."
+          "Whoa, chill out!")
+        (if (question? phrase)
+          "Sure."
+          "Whatever."))))
+  )
