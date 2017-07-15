@@ -1,0 +1,22 @@
+(get {"A" "B"} "A")
+(get {"A" "B" "C" "D"} "B")
+(get {"A" "B" "C" "D"} "C")
+(map #(%*%) [1,2,3])
+(map #(* % %) [1,2,3])
+(map #(str % "!") "abc")
+(map #(str % "!") "a")
+(get [1,2,3] 0)
+(def rna-map {"G" "C"
+              "C" "G"
+              "U" "A"
+              "A" "T"})
+(get rna-map "G")
+(get rna-map "C")
+(contains? (1,2,3) 0)
+(contains? [1,2,3] 0)
+(contains? [1,2,3] 4)
+(contains? [1,2,3] 3)
+(contains? {:a 1 :b 2} :a)
+(contains? {:a 1 :b 2} :c)
+throw AssertionError
+(throw (AssertionError "asdwqe"))
