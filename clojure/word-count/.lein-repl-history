@@ -1,0 +1,7 @@
+(re-matches #"^\d$" "123")
+(re-matches #"^\d$" "abc")
+(re-matches #"^\d*$" "abc")
+(re-matches #"^\d*$" "123")
+(re-matches #"^\b*$" "abc")
+(re-matches #"^[a-z]*$" "abc")
+(re-matches #"^[a-z]*$" "abc123")
