@@ -1,6 +1,6 @@
 (ns word-count)
 
-(defn reduce-word-counter [word-counter word]
+(defn word-count-reducer [word-counter word]
   (if (contains? word-counter word)
     (into word-counter {word (+ (get word-counter word) 1)})
     (into word-counter {word 1})))
@@ -19,4 +19,4 @@
 
 (defn word-count [phrase]
   (let [words (break-words phrase)]
-    (reduce reduce-word-counter {} words)))
+    (reduce word-count-reducer {} words)))
