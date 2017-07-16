@@ -14,8 +14,9 @@
 (defn split-words [phrase]
   (clojure.string/split phrase #"\s+"))
 
+(defn break-words [phrase]
+  (map lower-case-words (split-words (clear-non-letters phrase))))
+
 (defn word-count [phrase]
-  (let [only-letters-phrase (clear-non-letters phrase)]
-    (reduce reduce-word-counter
-            {}
-            (map lower-case-words (split-words only-letters-phrase)))))
+  (let [words (break-words phrase)]
+    (reduce reduce-word-counter {} words)))
