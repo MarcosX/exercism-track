@@ -2,7 +2,7 @@
 
 (defn word-count-reducer [word-counter word]
   (if (contains? word-counter word)
-    (into word-counter {word (+ (get word-counter word) 1)})
+    (into word-counter {word (inc (get word-counter word))})
     (into word-counter {word 1})))
 
 (defn lower-case-words [word]
