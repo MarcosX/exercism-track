@@ -1,0 +1,7 @@
+(str (range 9 1))
+(str (range 1 9))
+(str (range 9 1 -1))
+(inc (range 9 1 -1))
+(map (inc (range 9 1 -1)))
+(map #(inc %) (range 9 1 -1))
+(reduce #(+ %1 %2) (range 9 0 -1))
