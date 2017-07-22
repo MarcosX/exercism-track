@@ -29,8 +29,8 @@
 
 (defn sing
   ([verse-start] (sing verse-start 0))
-  ([verse-start verse-end] (reduce 
+  ([verse-start verse-end] (reduce
                              #(clojure.string/join "\n" [%1 (sing-verse %2)])
                              (sing-verse verse-start)
-                             (range (- verse-start 1) (- verse-end 1) -1))))
+                             (range (dec verse-start) (dec verse-end) -1))))
 
