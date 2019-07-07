@@ -1,5 +1,4 @@
 defmodule RobotSimulator do
-
   defmodule Robot do
     defstruct [:position, :direction]
 
@@ -30,27 +29,30 @@ defmodule RobotSimulator do
       end
     end
   end
-  
+
   @doc """
   Create a Robot Simulator given an initial direction and position.
 
   Valid directions are: `:north`, `:east`, `:south`, `:west`
   """
   @spec create(direction :: atom, position :: {integer, integer}) :: %Robot{}
-  def create(direction \\ :north, position \\ {0, 0})  do
+  def create(direction \\ :north, position \\ {0, 0}) do
     %Robot{direction: direction, position: position}
     |> validate_robot
   end
 
-  defp validate_robot(%{direction: direction, position: _position}) when direction not in [:north, :south, :east, :west] do
+  defp validate_robot(%{direction: direction, position: _position})
+       when direction not in [:north, :south, :east, :west] do
     {:error, "invalid direction"}
   end
 
-  defp validate_robot(%{direction: _direction, position: position}) when not is_tuple(position) or tuple_size(position) != 2 do
+  defp validate_robot(%{direction: _direction, position: position})
+       when not is_tuple(position) or tuple_size(position) != 2 do
     {:error, "invalid position"}
   end
 
-  defp validate_robot(%{direction: _direction, position: {x, y}}) when not is_number(x) or not is_number(y) do
+  defp validate_robot(%{direction: _direction, position: {x, y}})
+       when not is_number(x) or not is_number(y) do
     {:error, "invalid position"}
   end
 
@@ -68,14 +70,14 @@ defmodule RobotSimulator do
     try do
       instructions
       |> String.split("", trim: true)
-      |> Enum.reduce(robot, &(follow_instructions(&1, &2)))
+      |> Enum.reduce(robot, &follow_instructions(&1, &2))
     catch
       error -> error
     end
   end
 
   defp follow_instructions(instruction, _robot) when instruction not in ["L", "R", "A"] do
-    throw {:error, "invalid instruction"}
+    throw({:error, "invalid instruction"})
   end
 
   defp follow_instructions("R", robot) do
