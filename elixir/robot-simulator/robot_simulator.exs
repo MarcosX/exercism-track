@@ -2,6 +2,33 @@ defmodule RobotSimulator do
 
   defmodule Robot do
     defstruct [:position, :direction]
+
+    def turn_right(%{direction: direction, position: position} = _robot) do
+      case direction do
+        :north -> %Robot{position: position, direction: :east}
+        :east -> %Robot{position: position, direction: :south}
+        :south -> %Robot{position: position, direction: :west}
+        :west -> %Robot{position: position, direction: :north}
+      end
+    end
+
+    def turn_left(%{direction: direction, position: position} = _robot) do
+      case direction do
+        :north -> %Robot{position: position, direction: :west}
+        :west -> %Robot{position: position, direction: :south}
+        :south -> %Robot{position: position, direction: :east}
+        :east -> %Robot{position: position, direction: :north}
+      end
+    end
+
+    def advance(%{direction: direction, position: {x, y}} = _robot) do
+      case direction do
+        :north -> %Robot{position: {x, y + 1}, direction: direction}
+        :south -> %Robot{position: {x, y - 1}, direction: direction}
+        :east -> %Robot{position: {x + 1, y}, direction: direction}
+        :west -> %Robot{position: {x - 1, y}, direction: direction}
+      end
+    end
   end
   
   @doc """
@@ -38,47 +65,29 @@ defmodule RobotSimulator do
   """
   @spec simulate(robot :: any, instructions :: String.t()) :: any
   def simulate(robot, instructions) do
-    instructions
-    |> String.split("", trim: true)
-    |> simulate_instructions(robot)
-  end
-
-  defp simulate_instructions([], robot) do
-    robot
-  end
-
-  defp simulate_instructions([instruction | _instructions], _robot) when instruction not in ["L", "R", "A"] do
-    {:error, "invalid instruction"}
-  end
-
-  defp simulate_instructions(["R" | instructions], robot) do
-    new_robot = case robot.direction do
-      :north -> %Robot{position: robot.position, direction: :east}
-      :east -> %Robot{position: robot.position, direction: :south}
-      :south -> %Robot{position: robot.position, direction: :west}
-      :west -> %Robot{position: robot.position, direction: :north}
+    try do
+      instructions
+      |> String.split("", trim: true)
+      |> Enum.reduce(robot, &(follow_instructions(&1, &2)))
+    catch
+      error -> error
     end
-    simulate_instructions(instructions, new_robot)
   end
 
-  defp simulate_instructions(["L" | instructions], robot) do
-    new_robot = case robot.direction do
-      :north -> %Robot{position: robot.position, direction: :west}
-      :west -> %Robot{position: robot.position, direction: :south}
-      :south -> %Robot{position: robot.position, direction: :east}
-      :east -> %Robot{position: robot.position, direction: :north}
-    end
-    simulate_instructions(instructions, new_robot)
+  defp follow_instructions(instruction, _robot) when instruction not in ["L", "R", "A"] do
+    throw {:error, "invalid instruction"}
   end
 
-  defp simulate_instructions(["A" | instructions], %{direction: direction, position: {x, y}} = _robot) do
-    new_robot = case direction do
-      :north -> %Robot{position: {x, y + 1}, direction: direction}
-      :south -> %Robot{position: {x, y - 1}, direction: direction}
-      :east -> %Robot{position: {x + 1, y}, direction: direction}
-      :west -> %Robot{position: {x - 1, y}, direction: direction}
-    end
-    simulate_instructions(instructions, new_robot)
+  defp follow_instructions("R", robot) do
+    Robot.turn_right(robot)
+  end
+
+  defp follow_instructions("L", robot) do
+    Robot.turn_left(robot)
+  end
+
+  defp follow_instructions("A", robot) do
+    Robot.advance(robot)
   end
 
   @doc """
