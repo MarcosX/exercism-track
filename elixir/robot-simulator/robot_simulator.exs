@@ -2,30 +2,30 @@ defmodule RobotSimulator do
   defmodule Robot do
     defstruct [:position, :direction]
 
-    def turn_right(%{direction: direction, position: position} = _robot) do
+    def turn_right(%{direction: direction, position: _position} = robot) do
       case direction do
-        :north -> %Robot{position: position, direction: :east}
-        :east -> %Robot{position: position, direction: :south}
-        :south -> %Robot{position: position, direction: :west}
-        :west -> %Robot{position: position, direction: :north}
+        :north -> %{robot | direction: :east}
+        :east -> %{robot | direction: :south}
+        :south -> %{robot | direction: :west}
+        :west -> %{robot | direction: :north}
       end
     end
 
-    def turn_left(%{direction: direction, position: position} = _robot) do
+    def turn_left(%{direction: direction, position: _position} = robot) do
       case direction do
-        :north -> %Robot{position: position, direction: :west}
-        :west -> %Robot{position: position, direction: :south}
-        :south -> %Robot{position: position, direction: :east}
-        :east -> %Robot{position: position, direction: :north}
+        :north -> %{robot | direction: :west}
+        :west -> %{robot | direction: :south}
+        :south -> %{robot | direction: :east}
+        :east -> %{robot | direction: :north}
       end
     end
 
-    def advance(%{direction: direction, position: {x, y}} = _robot) do
+    def advance(%{direction: direction, position: {x, y}} = robot) do
       case direction do
-        :north -> %Robot{position: {x, y + 1}, direction: direction}
-        :south -> %Robot{position: {x, y - 1}, direction: direction}
-        :east -> %Robot{position: {x + 1, y}, direction: direction}
-        :west -> %Robot{position: {x - 1, y}, direction: direction}
+        :north -> %{robot | position: {x, y + 1}}
+        :south -> %{robot | position: {x, y - 1}}
+        :east -> %{robot | position: {x + 1, y}}
+        :west -> %{robot | position: {x - 1, y}}
       end
     end
   end
