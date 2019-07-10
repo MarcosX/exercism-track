@@ -80,17 +80,11 @@ defmodule RobotSimulator do
     throw({:error, "invalid instruction"})
   end
 
-  defp follow_instructions("R", robot) do
-    Robot.turn_right(robot)
-  end
+  defp follow_instructions("R", robot), do: Robot.turn_right(robot)
 
-  defp follow_instructions("L", robot) do
-    Robot.turn_left(robot)
-  end
+  defp follow_instructions("L", robot), do: Robot.turn_left(robot)
 
-  defp follow_instructions("A", robot) do
-    Robot.advance(robot)
-  end
+  defp follow_instructions("A", robot), do: Robot.advance(robot)
 
   @doc """
   Return the robot's direction.
