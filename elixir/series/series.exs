@@ -6,17 +6,10 @@ defmodule StringSeries do
   """
   @spec slices(s :: String.t(), size :: integer) :: list(String.t())
   def slices(s, size) when size > 0 do
-    s
-    |> String.split("", trim: true)
-    |> slices(size, [])
-    |> Enum.reverse()
+    String.split(s, "", trim: true)
+    |> Enum.chunk_every(size, 1, :discard)
+    |> Enum.map(&Enum.join/1)
   end
 
   def slices(_s, _size), do: []
-
-  defp slices([_head | tail] = s, size, acc) when length(s) >= size do
-    slices(tail, size, [Enum.take(s, size) |> Enum.join("") | acc ])
-  end
-
-  defp slices(_s, _size, acc), do: acc
 end
