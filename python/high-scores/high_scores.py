@@ -1,26 +1,22 @@
+"""
+Functions to retrieve score informations
+"""
 def latest(scores):
-    score = scores[0]
-    for s in scores:
-        if(score > s and s > 0):
-            score = s
-    return score
+    """
+    get the latest score
+    """
+    return min(filter(lambda s: s > 0, scores))
 
 
 def personal_best(scores):
-    score = scores[0]
-    for s in scores:
-        if(score < s and s > 0):
-            score = s
-    return score
+    """
+    get the highest score
+    """
+    return max(filter(lambda s: s > 0, scores))
 
 
 def personal_top_three(scores):
-    score = []
-    for s in scores:
-        if(len(score) < 3):
-            score.append(s)
-        elif(min(score) < s and s > 0 and s not in score):
-            score.remove(min(score))
-            score.append(s)
-    score.sort(reverse=True)
-    return score
+    """
+    get the top three highest score
+    """
+    return sorted(scores, reverse=True)[:3]
