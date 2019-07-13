@@ -5,7 +5,7 @@ def latest(scores):
     """
     get the latest score
     """
-    return min(filter(lambda s: s > 0, scores))
+    return scores[-1]
 
 
 def personal_best(scores):
