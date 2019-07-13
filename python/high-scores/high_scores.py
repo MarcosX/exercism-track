@@ -12,7 +12,7 @@ def personal_best(scores):
     """
     get the highest score
     """
-    return max(filter(lambda s: s > 0, scores))
+    return max(scores)
 
 
 def personal_top_three(scores):
