@@ -11,14 +11,7 @@ class Matrix:
         """
         split string and parse elements to int
         """
-        self.rows = list(map(self.convert_row_to_int, matrix_string.split("\n")))
-
-    @staticmethod
-    def convert_row_to_int(row):
-        """
-        split a row and cast element to int
-        """
-        return list(map(int, row.split()))
+        self.rows = [[int(i) for i in row.split()] for row in matrix_string.split("\n")]
 
     def row(self, index):
         """
@@ -30,4 +23,4 @@ class Matrix:
         """
         build a column
         """
-        return list(map(lambda row: row[index-1], self.rows))
+        return [row[index-1] for row in self.rows]
