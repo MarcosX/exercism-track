@@ -1,0 +1,17 @@
+version: 2.1
+
+workflows:
+  "Python exercises":
+    jobs:
+      - python
+
+jobs:
+  python:
+    docker:
+      - image: python
+    steps:
+      - checkout
+      - run: |
+          pip install --no-cache-dir -r python/requirements.txt
+          pytest python/**/*_test.py
+          ls python/**/*.py | grep -v _test.py | xargs pylint
