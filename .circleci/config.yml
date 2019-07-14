@@ -18,7 +18,4 @@ jobs:
       - image: python:3.7.3
     steps:
       - checkout
-      - run: |
-          pip install --no-cache-dir -r python/requirements.txt
-          pytest python/**/*_test.py
-          ls python/**/*.py | grep -v _test.py | xargs pylint
+      - run: make test-python

@@ -7,8 +7,10 @@ test-crystal:
 	ls -d crystal/* | xargs -L 1 -I folder bash -c 'cd folder && crystal spec'
 
 test-python:
-	echo "Running Python tests"
-	pytest python/**/*_test.py
+	echo "Running Python tests" &&\
+  pip install --no-cache-dir -r python/requirements.txt &&\
+  pytest python/**/*_test.py &&\
+  ls python/**/*.py | grep -v _test.py | xargs pylint
 
 test-elixir:
 	echo "Running Elixir tests"
