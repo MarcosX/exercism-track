@@ -12,7 +12,7 @@ jobs:
       - image: ruby:2.6.3
     steps:
       - checkout
-      - run: ls -d ruby/* | xargs -L 1 -I folder bash -c 'cd folder && ruby *_test.rb'
+      - run: make test-ruby
   python:
     docker:
       - image: python:3.7.3
