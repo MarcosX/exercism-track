@@ -4,11 +4,20 @@ workflows:
   "Python exercises":
     jobs:
       - python
+  "Ruby exercises":
+    jobs:
+      - ruby
 
 jobs:
+  ruby:
+    docker:
+      - image: ruby:2.6.3
+    steps:
+      - checkout
+      - run: ls -d ruby/* | xargs -L 1 -I folder bash -c 'cd folder && ruby *_test.rb'
   python:
     docker:
-      - image: python
+      - image: python:3.7.3
     steps:
       - checkout
       - run: |
