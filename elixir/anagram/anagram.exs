@@ -16,7 +16,7 @@ defmodule Anagram do
   end
 
   defp sort_string_chars(string) do
-    String.to_char_list(string)
+    String.to_charlist(string)
     |> Enum.sort
     |> Enum.join
   end

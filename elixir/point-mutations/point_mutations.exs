@@ -20,11 +20,11 @@ defmodule DNA do
     acc
   end
 
-  defp hamming_distance([], _, acc) do
+  defp hamming_distance([], _, _acc) do
     nil
   end
 
-  defp hamming_distance(_, [], acc) do
+  defp hamming_distance(_, [], _acc) do
     nil
   end
 
@@ -32,7 +32,7 @@ defmodule DNA do
     hamming_distance(s1_tail, s2_tail, acc)
   end
 
-  defp hamming_distance([s1_head|s1_tail], [s2_head|s2_tail], acc) do
+  defp hamming_distance([_s1_head|s1_tail], [_s2_head|s2_tail], acc) do
     hamming_distance(s1_tail, s2_tail, acc+1)
   end
 end

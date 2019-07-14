@@ -10,7 +10,7 @@ defmodule Teenager do
   end
 
   defp ignored?(input) do
-    String.strip(input) == ""
+    String.trim(input) == ""
   end
 
   defp questioned?(input) do

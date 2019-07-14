@@ -5,6 +5,7 @@ workflows:
     jobs:
       - python
       - ruby
+      - elixir
 
 jobs:
   ruby:
@@ -13,6 +14,12 @@ jobs:
     steps:
       - checkout
       - run: make test-ruby
+  elixir:
+    docker:
+      - image: elixir:1.9.0
+    steps:
+      - checkout
+      - run: make test-elixir
   python:
     docker:
       - image: python:3.7.3
