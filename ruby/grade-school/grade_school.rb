@@ -2,17 +2,16 @@ class School
   attr :students
 
   def initialize
-    @students = {}
+    @students = Hash.new { [] }
   end
 
   def add(name, grade)
-    @students[grade] ||= []
-    @students[grade] << name
+    @students[grade] <<= name
     @students[grade].sort!
   end
 
   def students(grade)
-    @students[grade] || []
+    @students[grade]
   end
 
   def students_by_grade
