@@ -11,14 +11,13 @@ import (
 )
 
 // Abbreviate should have a comment documenting it.
-func Abbreviate(s string) string {
-	abbreviation := ""
-  formattedString := strings.ToUpper(strings.ReplaceAll(s, "'", ""))
+func Abbreviate(s string) (abbreviation string) {
+  formattedString := strings.ReplaceAll(s, "'", "")
   re := regexp.MustCompile("[a-zA-Z]+")
   wordsRange := re.FindAllIndex([]byte(formattedString), -1)
   for _, wordRange := range wordsRange {
     firstLetter := string(formattedString[wordRange[0]])
-    abbreviation = abbreviation + firstLetter
+    abbreviation += firstLetter
   }
-	return abbreviation
+	return strings.ToUpper(abbreviation)
 }
