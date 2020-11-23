@@ -7,17 +7,17 @@ package acronym
 
 import (
   "strings"
-  "regexp"
+  "unicode"
 )
 
 // Abbreviate should have a comment documenting it.
 func Abbreviate(s string) (abbreviation string) {
-  formattedString := strings.ReplaceAll(s, "'", "")
-  re := regexp.MustCompile("[a-zA-Z]+")
-  wordsRange := re.FindAllIndex([]byte(formattedString), -1)
-  for _, wordRange := range wordsRange {
-    firstLetter := string(formattedString[wordRange[0]])
-    abbreviation += firstLetter
+  isLetter := func (c rune) bool {
+    return !unicode.IsLetter(c) && !(c == '\'')
+  }
+  words := strings.FieldsFunc(s, isLetter)
+  for _, word := range words {
+    abbreviation += string(word[0])
   }
 	return strings.ToUpper(abbreviation)
 }
