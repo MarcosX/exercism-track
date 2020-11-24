@@ -11,11 +11,11 @@ import (
 )
 
 // Abbreviate should have a comment documenting it.
-func Abbreviate(s string) (abbreviation string) {
-  isLetter := func (c rune) bool {
-    return !unicode.IsLetter(c) && !(c == '\'')
+func Abbreviate(fullName string) (abbreviation string) {
+  shouldSplit := func (c rune) bool {
+    return !(unicode.IsLetter(c) || c == '\'')
   }
-  words := strings.FieldsFunc(s, isLetter)
+  words := strings.FieldsFunc(fullName, shouldSplit)
   for _, word := range words {
     abbreviation += string(word[0])
   }
