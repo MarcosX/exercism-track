@@ -1,9 +1,9 @@
 defmodule HighScore do
+  @initial_score 0
+
   def new(), do: %{}
 
-  def add_player(scores, name), do: add_player(scores, name, 0)
-
-  def add_player(scores, name, score) do
+  def add_player(scores, name, score \\ @initial_score) do
     Map.merge(scores, %{name => score})
   end
 
@@ -12,7 +12,7 @@ defmodule HighScore do
   end
 
   def reset_score(scores, name) do
-    Map.merge(scores, %{name => 0})
+    Map.merge(scores, %{name => @initial_score})
   end
 
   def update_score(scores, name, score) do
